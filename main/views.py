@@ -64,8 +64,6 @@ class CountryView(APIView):
 		query = Country.objects.filter(admin=name)
 		if not query:
 			return Response({'err': 'No country with the given name exists'})
-		elif query.count() != 1:
-			return Response({'err': 'No country with the given name exists'})
 		country = query[0]
 		country.delete()
 		return Response({'msg': f'{name} deleted successfully.'})
